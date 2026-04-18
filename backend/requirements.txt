@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pandas
+numpy
+sqlalchemy
+google-generativeai
+python-multipart
+scikit-learn
+reportlab
+pydantic-settings
