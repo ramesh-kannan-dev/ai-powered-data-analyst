@@ -14,7 +14,7 @@ app = FastAPI(
 # CORS configuration - Allow our frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"], 
+    allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -25,3 +25,10 @@ app.include_router(api_router, prefix="/api")
 @app.get("/")
 async def root():
     return {"message": "Welcome to AI-Powered Data Analyst API"}
+
+import os
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
