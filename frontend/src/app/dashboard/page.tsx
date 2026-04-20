@@ -42,7 +42,7 @@ export default function Dashboard() {
 
   const fetchHistory = async () => {
       try {
-          const res = await axios.get('http://localhost:8000/api/history');
+          const res = await axios.get('https://ai-powered-data-analyst-8bsv.onrender.com/api/history');
           setHistory(res.data);
       } catch(err) {
           console.error("Failed to fetch history");
@@ -57,7 +57,7 @@ export default function Dashboard() {
     formData.append('file', file);
 
     try {
-      const res = await axios.post('http://localhost:8000/api/dataset/upload', formData, {
+      const res = await axios.post('https://ai-powered-data-analyst-8bsv.onrender.com/api/dataset/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       loadAnalysisResults(res.data.summary, res.data.file_id);
@@ -86,8 +86,8 @@ export default function Dashboard() {
       
       setLoadingContext(true);
       Promise.all([
-        axios.get(`http://localhost:8000/api/analysis/${id}/insights`),
-        axios.get(`http://localhost:8000/api/analysis/${id}/charts`)
+        axios.get(`https://ai-powered-data-analyst-8bsv.onrender.com/api/analysis/${id}/insights`),
+        axios.get(`https://ai-powered-data-analyst-8bsv.onrender.com/api/analysis/${id}/charts`)
       ]).then(([insightsRes, chartsRes]) => {
           setInsights(insightsRes.data.insights);
           setCharts(chartsRes.data.charts);
@@ -181,7 +181,7 @@ export default function Dashboard() {
                                  <h1 className="text-3xl font-bold tracking-tight">Dashboard Overview</h1>
                                  <p className="text-[#86868b] text-[15px] mt-1">File ID: {fileId}</p>
                               </div>
-                              <button onClick={() => window.open(`http://localhost:8000/api/report/${fileId}/download`)} className="apple-button px-5 py-2.5 flex items-center text-[13px] bg-[#2c2c2e]">
+                              <button onClick={() => window.open(`https://ai-powered-data-analyst-8bsv.onrender.com/api/report/${fileId}/download`)} className="apple-button px-5 py-2.5 flex items-center text-[13px] bg-[#2c2c2e]">
                                   <Download size={14} className="mr-2" /> Export PDF
                               </button>
                           </header>
